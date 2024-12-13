@@ -10,7 +10,7 @@ var project = 'aca-gh-runners'
 
 var tags = {
   project: project
-  repo: 'aca-gh-actions-runner'
+  repo: 'portlog-gh-actions-runner'
 }
 
 resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
