@@ -32,6 +32,7 @@ jobs:
           parameters: >
             location=${{ vars.AZURE_LOCATION }}
             gitHubAppKey="${{ secrets.GH_APP_PRIVATE_KEY }}"
+            subnetId=${{ vars.AZURE_SUBNET_ID }}
           deploymentName: deploy-aca-gh-runners-dev-prerequisites
 
       - name: Generate access token
