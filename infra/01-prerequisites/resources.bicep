@@ -1,5 +1,6 @@
 param location string
 param project string
+param subnetId string
 param tags {
   *: string
 }
@@ -35,6 +36,7 @@ module acaEnv '../modules/containerAppEnvironment.bicep' = {
     project: project
     tags: union(tags, { module: 'containerAppEnvironment.bicep' })
     lawName: law.outputs.lawName
+    subnetId: subnetId
   }
 }
 
