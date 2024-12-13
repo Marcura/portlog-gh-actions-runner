@@ -124,6 +124,10 @@ resource acaJob 'Microsoft.App/jobs@2023-05-01' = {
               name: 'RUNNER_NAME_PREFIX'
               value: project
             }
+            {
+              name: 'RUNNER_GROUP'
+              value: 'Portlog'
+            }
           ]
         }
       ]
