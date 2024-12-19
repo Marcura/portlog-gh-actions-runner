@@ -5,7 +5,6 @@ targetScope = 'subscription'
 param location string
 @secure()
 param gitHubAppKey string
-param subnetId string
 param acaEnvName string
 
 var project = 'aca-gh-runners'
@@ -30,7 +29,6 @@ module resources 'resources.bicep' = {
     tags: union(tags, { module: '01-prerequisites/resources.bicep' })
     project: project
     gitHubAppKey: gitHubAppKey
-    subnetId: subnetId
   }
 }
 

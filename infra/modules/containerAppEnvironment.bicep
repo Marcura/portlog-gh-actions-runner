@@ -1,6 +1,5 @@
 param location string
 param project string
-param subnetId string
 param tags {
   *: string
 }
@@ -28,9 +27,6 @@ resource acaEnv 'Microsoft.App/managedEnvironments@2023-05-01' = {
         sharedKey: law.listKeys().primarySharedKey
       }
     }
-   vnetConfiguration: {
-     infrastructureSubnetId: subnetId
-   }
   }
 }
 
