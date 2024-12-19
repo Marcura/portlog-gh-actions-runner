@@ -6,6 +6,7 @@ param tags {
 
 param acrName string
 param acaEnvironmentName string
+param acaEnvironmentResourceGroup string
 param acaMsiName string
 @allowed([ '0.25', '0.5', '0.75', '1.0', '1.25', '1.5', '1.75', '2.0' ])
 param containerCpu string = '0.25'
@@ -18,12 +19,18 @@ param gitHubAppInstallationId string
 param gitHubAppKeySecretUri string
 param gitHubOrganization string
 
+resource acaEnvRg 'Microsoft.Resources/resourceGroups@2022-09-01' existing = {
+  name: acaEnvironmentResourceGroup
+  location: location
+}
+
 resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' existing = {
   name: acrName
 }
 
 resource acaEnv 'Microsoft.App/managedEnvironments@2023-05-01' existing = {
   name: acaEnvironmentName
+  scope: resourceGroup(acaEnvRg)
 }
 
 resource acaMsi 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' existing = {

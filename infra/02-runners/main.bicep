@@ -5,6 +5,7 @@ param useJobs bool = true
 
 param acrName string
 param acaEnvName string
+param acaEnvRgName string
 param acaMsiName string
 param imageTag string
 
@@ -17,6 +18,7 @@ module acj '../modules/containerAppJob.bicep' = if (useJobs) {
   name: '${deployment().name}-job'
   params: {
     acaEnvironmentName: acaEnvName
+    acaEnvironmentResourceGroup: acaEnvRgName
     acaMsiName: acaMsiName
     acrName: acrName
     gitHubAppId: gitHubAppId

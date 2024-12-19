@@ -5,7 +5,6 @@ targetScope = 'subscription'
 param location string
 @secure()
 param gitHubAppKey string
-param acaEnvName string
 
 var project = 'aca-gh-runners'
 
@@ -34,7 +33,6 @@ module resources 'resources.bicep' = {
 
 output project string = project
 output acrName string = resources.outputs.acrName
-output acaEnvName string = acaEnvName
 output acaMsiName string = resources.outputs.acaMsiName
 output rgName string = rg.name
 output gitHubAppKeySecretUri string = resources.outputs.gitHubAppKeySecretUri
