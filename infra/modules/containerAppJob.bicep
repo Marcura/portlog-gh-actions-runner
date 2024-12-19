@@ -19,10 +19,6 @@ param gitHubAppInstallationId string
 param gitHubAppKeySecretUri string
 param gitHubOrganization string
 
-// resource acaEnvRg 'Microsoft.Resources/resourceGroups@2022-09-01' existing = {
-//   name: acaEnvironmentResourceGroup
-// }
-
 resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' existing = {
   name: acrName
 }
