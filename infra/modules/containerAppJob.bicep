@@ -19,25 +19,24 @@ param gitHubAppInstallationId string
 param gitHubAppKeySecretUri string
 param gitHubOrganization string
 
-resource acaEnvRg 'Microsoft.Resources/resourceGroups@2022-09-01' existing = {
-  name: acaEnvironmentResourceGroup
-  location: location
-}
+// resource acaEnvRg 'Microsoft.Resources/resourceGroups@2022-09-01' existing = {
+//   name: acaEnvironmentResourceGroup
+// }
 
 resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' existing = {
   name: acrName
 }
 
-resource acaEnv 'Microsoft.App/managedEnvironments@2023-05-01' existing = {
+resource acaEnv 'Microsoft.App/managedEnvironments@2024-03-01' existing = {
   name: acaEnvironmentName
-  scope: resourceGroup(acaEnvRg)
+  scope: resourceGroup(acaEnvironmentResourceGroup)
 }
 
 resource acaMsi 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' existing = {
   name: acaMsiName
 }
 
-resource acaJob 'Microsoft.App/jobs@2023-05-01' = {
+resource acaJob 'Microsoft.App/jobs@2024-03-01' = {
   name: 'caj-${project}'
   location: location
   tags: tags
