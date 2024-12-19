@@ -1,6 +1,5 @@
 param location string
 param project string
-param subnetId string
 param tags {
   *: string
 }
@@ -17,26 +16,6 @@ module acr '../modules/containerRegistry.bicep' = {
     project: project
     tags: union(tags, { module: 'containerRegistry.bicep' })
     uniqueSuffix: uniqueSuffix
-  }
-}
-
-module law '../modules/logAnalytics.bicep' = {
-  name: '${deployment().name}-law'
-  params: {
-    location: location
-    project: project
-    tags: union(tags, { module: 'logAnalytics.bicep' })
-  }
-}
-
-module acaEnv '../modules/containerAppEnvironment.bicep' = {
-  name: '${deployment().name}-aca-env'
-  params: {
-    location: location
-    project: project
-    tags: union(tags, { module: 'containerAppEnvironment.bicep' })
-    lawName: law.outputs.lawName
-    subnetId: subnetId
   }
 }
 
@@ -71,6 +50,5 @@ module msi '../modules/containerAppIdentity.bicep' = {
 }
 
 output acrName string = acr.outputs.acrName
-output acaEnvName string = acaEnv.outputs.acaEnvName
 output acaMsiName string = msi.outputs.msiName
 output gitHubAppKeySecretUri string = keyVaultGitHubAppKey.outputs.uri
