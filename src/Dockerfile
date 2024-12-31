@@ -1,4 +1,4 @@
-FROM myoung34/github-runner:ubuntu-jammy
+FROM myoung34/github-runner:latest
 
 # install Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
