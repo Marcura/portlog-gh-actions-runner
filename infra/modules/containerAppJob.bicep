@@ -77,6 +77,7 @@ resource acaJob 'Microsoft.App/jobs@2024-03-01' = {
                 runnerScope: 'org'
                 applicationID: gitHubAppId
                 installationID: gitHubAppInstallationId
+                repos: 'portlog-owb,portlog-operators-api,portlog-azure-infra,portlog-data-jobs'
               }
             }
           ]
@@ -125,10 +126,6 @@ resource acaJob 'Microsoft.App/jobs@2024-03-01' = {
             {
               name: 'RUNNER_NAME_PREFIX'
               value: project
-            }
-            {
-              name: 'REPOS'
-              value: 'portlog-owb,portlog-operators-api,portlog-azure-infra,portlog-data-jobs'
             }
           ]
         }
