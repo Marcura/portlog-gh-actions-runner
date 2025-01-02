@@ -120,15 +120,15 @@ resource acaJob 'Microsoft.App/jobs@2024-03-01' = {
             }
             {
               name: 'EPHEMERAL'
-              value: '1'
+              value: 'true'
             }
             {
               name: 'RUNNER_NAME_PREFIX'
               value: project
             }
             {
-              name: 'RUNNER_GROUP'
-              value: 'Portlog'
+              name: 'REPOS'
+              value: 'portlog-owb,portlog-operators-api,portlog-azure-infra,portlog-data-jobs'
             }
           ]
         }
