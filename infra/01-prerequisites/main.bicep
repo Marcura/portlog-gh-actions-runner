@@ -6,7 +6,6 @@ param location string
 @secure()
 param gitHubAppKey string
 param acrName string
-param acrRgName string
 
 var project = 'aca-gh-runners'
 

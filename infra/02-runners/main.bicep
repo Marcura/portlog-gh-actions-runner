@@ -4,7 +4,6 @@ param project string
 param useJobs bool = true
 
 param acrName string
-param acrRgName string
 param acaEnvName string
 param acaEnvRgName string
 param acaMsiName string
@@ -22,7 +21,6 @@ module acj '../modules/containerAppJob.bicep' = if (useJobs) {
     acaEnvironmentResourceGroup: acaEnvRgName
     acaMsiName: acaMsiName
     acrName: acrName
-    acrRgName: acrRgName
     gitHubAppId: gitHubAppId
     gitHubAppInstallationId: gitHubAppInstallationId
     gitHubAppKeySecretUri: gitHubAppKeySecretUri

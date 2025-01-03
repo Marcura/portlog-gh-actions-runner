@@ -32,8 +32,7 @@ jobs:
           parameters: >
             location=${{ vars.AZURE_LOCATION }}
             gitHubAppKey="${{ secrets.GH_APP_PRIVATE_KEY }}"
-            acrName=${{ vars.AZURE_ACR_NAME }}
-            acrRgName=${{ vars.AZURE_ACR_RG_NAME }}
+            acrName=portlog
           deploymentName: deploy-aca-gh-runners-dev-prerequisites
 
       - name: Generate access token
@@ -47,6 +46,7 @@ jobs:
         run: |
           gh variable set PROJECT --body ${{ steps.bicep-deploy.outputs.project }}
           gh variable set RG_NAME --body ${{ steps.bicep-deploy.outputs.rgName }}
+          gh variable set ACR_NAME --body ${{ steps.bicep-deploy.outputs.acrName }}
           gh variable set ACA_MSI_NAME --body ${{ steps.bicep-deploy.outputs.acaMsiName }}
           gh variable set GH_APP_PRIVATE_KEY_SECRET_URI --body ${{ steps.bicep-deploy.outputs.gitHubAppKeySecretUri }}          
         env:

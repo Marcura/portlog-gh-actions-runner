@@ -2,12 +2,10 @@ param location string
 param project string
 
 param acrName string
-param acrRgName string
 param kvName string
 
 resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' existing = {
   name: acrName
-  scope: resourceGroup(acrRgName)
 }
 
 resource acaMsi 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = {
