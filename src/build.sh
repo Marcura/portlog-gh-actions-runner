@@ -1,1 +1,1 @@
-az acr build --registry acracaghrunnersgw3unugk6gelq -t runners/github/linux:latest .
+az acr build --registry acracaghrunnersgw3unugk6gelq -t runners/github/linux:from-base .

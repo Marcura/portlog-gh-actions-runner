@@ -32,7 +32,6 @@ jobs:
           parameters: >
             location=${{ vars.AZURE_LOCATION }}
             gitHubAppKey="${{ secrets.GH_APP_PRIVATE_KEY }}"
-            acrName=portlog
           deploymentName: deploy-aca-gh-runners-dev-prerequisites
 
       - name: Generate access token
@@ -53,5 +52,5 @@ jobs:
           GITHUB_TOKEN: ${{ steps.generate-access-token.outputs.token }}
 
       - run: |
-          az acr build -r ${{ steps.bicep-deploy.outputs.acrName }} -g ${{ steps.bicep-deploy.outputs.rgName }} -f src/Dockerfile -t runners/github/linux:latest src
+          az acr build -r ${{ steps.bicep-deploy.outputs.acrName }} -g ${{ steps.bicep-deploy.outputs.rgName }} -f src/Dockerfile -t runners/github/linux:from-base src
         name: Build and push runner image to the registry
