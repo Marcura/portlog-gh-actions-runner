@@ -42,5 +42,6 @@ module msi '../modules/containerAppIdentity.bicep' = {
   }
 }
 
+output acrName string = acrName
 output acaMsiName string = msi.outputs.msiName
 output gitHubAppKeySecretUri string = keyVaultGitHubAppKey.outputs.uri
