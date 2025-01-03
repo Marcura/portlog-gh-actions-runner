@@ -5,6 +5,7 @@ param tags {
 }
 
 param acrName string
+param acrRgName string
 param acaEnvironmentName string
 param acaEnvironmentResourceGroup string
 param acaMsiName string
@@ -21,6 +22,7 @@ param gitHubOrganization string
 
 resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' existing = {
   name: acrName
+  scope: resourceGroup(acrRgName)
 }
 
 resource acaEnv 'Microsoft.App/managedEnvironments@2024-03-01' existing = {

@@ -1,6 +1,7 @@
 param location string
 param project string
 param acrName string
+param acrRgName string
 param tags {
   *: string
 }
@@ -34,6 +35,7 @@ module msi '../modules/containerAppIdentity.bicep' = {
   name: '${deployment().name}-msi'
   params: {
     acrName: acrName
+    acrRgName: acrRgName
     kvName: keyVault.outputs.name
     location: location
     project: project
