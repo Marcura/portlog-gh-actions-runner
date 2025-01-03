@@ -5,7 +5,6 @@ targetScope = 'subscription'
 param location string
 @secure()
 param gitHubAppKey string
-param acrName string
 
 var project = 'aca-gh-runners'
 
@@ -29,7 +28,6 @@ module resources 'resources.bicep' = {
     tags: union(tags, { module: '01-prerequisites/resources.bicep' })
     project: project
     gitHubAppKey: gitHubAppKey
-    acrName: acrName
   }
 }
 
