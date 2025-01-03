@@ -44,7 +44,7 @@ jobs:
             acaEnvName=${{ vars.AZURE_ACA_ENV_NAME }} 
             acaEnvRgName=${{ vars.AZURE_ACA_ENV_RG_NAME }} 
             acaMsiName=${{ vars.ACA_MSI_NAME }}
-            imageTag=from-base
+            imageTag=latest
             gitHubAppId=${{ vars.GH_APP_ID }}
             gitHubAppInstallationId=${{ vars.GH_APP_INSTALLATION_ID }}
             gitHubAppKeySecretUri=${{ vars.GH_APP_PRIVATE_KEY_SECRET_URI }}

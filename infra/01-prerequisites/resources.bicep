@@ -1,5 +1,6 @@
 param location string
 param project string
+param acrName string
 param tags {
   *: string
 }
@@ -8,16 +9,6 @@ param tags {
 param gitHubAppKey string
 
 var uniqueSuffix = uniqueString(subscription().id, location, project)
-
-module acr '../modules/containerRegistry.bicep' = {
-  name: '${deployment().name}-acr'
-  params: {
-    location: location
-    project: project
-    tags: union(tags, { module: 'containerRegistry.bicep' })
-    uniqueSuffix: uniqueSuffix
-  }
-}
 
 module keyVault '../modules/keyVault.bicep' = {
   name: '${deployment().name}-kv'
@@ -42,13 +33,13 @@ module keyVaultGitHubAppKey '../modules/keyVaultSecret.bicep' = {
 module msi '../modules/containerAppIdentity.bicep' = {
   name: '${deployment().name}-msi'
   params: {
-    acrName: acr.outputs.acrName
+    acrName: acrName
     kvName: keyVault.outputs.name
     location: location
     project: project
   }
 }
 
-output acrName string = acr.outputs.acrName
+output acrName string = acrName
 output acaMsiName string = msi.outputs.msiName
 output gitHubAppKeySecretUri string = keyVaultGitHubAppKey.outputs.uri
